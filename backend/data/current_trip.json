@@ -1,0 +1,203 @@
+{
+    "trip_id": "trip_20261001100840",
+    "traveler": "s",
+    "origin": "e",
+    "destination": "g",
+    "events": [
+        {
+            "id": "flight_1",
+            "type": "flight",
+            "name": "Primary Flight",
+            "start": "2026-09-30T14:30+00:00",
+            "end": "2026-10-01T08:30+00:00",
+            "location": "g",
+            "depends_on": [],
+            "buffer_minutes": 0,
+            "status": "replanned"
+        },
+        {
+            "id": "hotel_1",
+            "type": "hotel",
+            "name": "Hotel Check-in",
+            "start": "2026-10-03T10:57+00:00",
+            "end": "2026-10-09T09:57+00:00",
+            "location": "g",
+            "depends_on": [
+                "flight_1"
+            ],
+            "buffer_minutes": 30
+        },
+        {
+            "id": "meeting_1",
+            "type": "meeting",
+            "name": "Client Meeting",
+            "start": "2026-10-09T10:12+00:00",
+            "end": "2026-10-08T10:12+00:00",
+            "location": "",
+            "depends_on": [
+                "hotel_1"
+            ],
+            "buffer_minutes": 15
+        },
+        {
+            "id": "activity_1",
+            "type": "activity",
+            "name": "City Activity",
+            "start": "2026-10-10T11:59+00:00",
+            "end": "2026-10-10T13:06+00:00",
+            "location": "",
+            "depends_on": [
+                "meeting_1"
+            ],
+            "buffer_minutes": 15
+        },
+        {
+            "id": "dinner_1",
+            "type": "dinner",
+            "name": "Dinner",
+            "start": "2026-10-10T13:21+00:00",
+            "end": "2026-10-10T14:21+00:00",
+            "location": "",
+            "depends_on": [
+                "activity_1"
+            ],
+            "buffer_minutes": 15
+        }
+    ],
+    "original_events": [
+        {
+            "id": "flight_1",
+            "type": "flight",
+            "name": "Primary Flight",
+            "start": "2026-10-01T09:57:00.000Z",
+            "end": "2026-10-02T09:57:00.000Z",
+            "location": "g",
+            "depends_on": [],
+            "buffer_minutes": 0
+        },
+        {
+            "id": "hotel_1",
+            "type": "hotel",
+            "name": "Hotel Check-in",
+            "start": "2026-10-03T10:57:00.000Z",
+            "end": "2026-10-09T09:57:00.000Z",
+            "location": "g",
+            "depends_on": [
+                "flight_1"
+            ],
+            "buffer_minutes": 30
+        },
+        {
+            "id": "meeting_1",
+            "type": "meeting",
+            "name": "Client Meeting",
+            "start": "2026-10-08T10:58:00.000Z",
+            "end": "2026-10-07T10:58:00.000Z",
+            "location": "",
+            "depends_on": [
+                "hotel_1"
+            ],
+            "buffer_minutes": 15
+        },
+        {
+            "id": "activity_1",
+            "type": "activity",
+            "name": "City Activity",
+            "start": "2026-10-10T11:59:00.000Z",
+            "end": "2026-10-10T13:06:00.000Z",
+            "location": "",
+            "depends_on": [
+                "meeting_1"
+            ],
+            "buffer_minutes": 15
+        },
+        {
+            "id": "dinner_1",
+            "type": "dinner",
+            "name": "Dinner",
+            "start": "2026-10-09T13:00:00.000Z",
+            "end": "2026-10-09T14:00:00.000Z",
+            "location": "",
+            "depends_on": [
+                "activity_1"
+            ],
+            "buffer_minutes": 15
+        }
+    ],
+    "recovery_options": [
+        {
+            "option_id": "recovery_1",
+            "label": "Earlier recovery flight",
+            "flight_name": "AI Recovery Flight 1",
+            "departure": "2026-09-30T14:30+00:00",
+            "arrival": "2026-10-01T08:30+00:00",
+            "duration_minutes": 1080,
+            "reason": "original flight delayed due to unforeseen circumstances",
+            "simulation_only": true
+        },
+        {
+            "option_id": "recovery_2",
+            "label": "Near-original recovery flight",
+            "flight_name": "AI Recovery Flight 2",
+            "departure": "2026-09-30T20:30+00:00",
+            "arrival": "2026-10-01T10:30+00:00",
+            "duration_minutes": 840,
+            "reason": "alternative route due to air traffic control",
+            "simulation_only": true
+        },
+        {
+            "option_id": "recovery_3",
+            "label": "Later recovery flight",
+            "flight_name": "AI Recovery Flight 3",
+            "departure": "2026-09-30T22:30+00:00",
+            "arrival": "2026-10-01T12:30+00:00",
+            "duration_minutes": 840,
+            "reason": "flight delay due to mechanical issues",
+            "simulation_only": true
+        }
+    ],
+    "selected_recovery": {
+        "option_id": "recovery_1",
+        "label": "Earlier recovery flight",
+        "flight_name": "AI Recovery Flight 1",
+        "departure": "2026-09-30T14:30+00:00",
+        "arrival": "2026-10-01T08:30+00:00",
+        "duration_minutes": 1080,
+        "reason": "original flight delayed due to unforeseen circumstances",
+        "simulation_only": true
+    },
+    "last_replan": {
+        "changed_event_id": "flight_1",
+        "selected_option_id": "recovery_1",
+        "timestamp": "2026-10-01T10:18:48.373700+00:00"
+    },
+    "recovery_evaluations": [
+        {
+            "option_id": "recovery_1",
+            "flight_name": "AI Recovery Flight 1",
+            "total_downstream_shift_minutes": 0,
+            "conflicts": [],
+            "conflict_count": 0,
+            "score": 0,
+            "feasible": true
+        },
+        {
+            "option_id": "recovery_2",
+            "flight_name": "AI Recovery Flight 2",
+            "total_downstream_shift_minutes": 0,
+            "conflicts": [],
+            "conflict_count": 0,
+            "score": 0,
+            "feasible": true
+        },
+        {
+            "option_id": "recovery_3",
+            "flight_name": "AI Recovery Flight 3",
+            "total_downstream_shift_minutes": 0,
+            "conflicts": [],
+            "conflict_count": 0,
+            "score": 0,
+            "feasible": true
+        }
+    ]
+}

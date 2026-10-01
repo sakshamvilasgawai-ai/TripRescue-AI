@@ -2,30 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>TripRescue AI</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="/style.css"
+    >
 </head>
 
 <body>
 
 <header class="topbar">
 
-    <div>
-        <div class="brand">
-            TripRescue AI
-        </div>
+    <div class="brand">
+        <div class="brand-mark">TR</div>
 
-        <div class="subtitle">
-            Autonomous Travel Disruption & Replanning Agent
+        <div>
+            <h1>TripRescue AI</h1>
+            <p>Autonomous Travel Recovery</p>
         </div>
     </div>
 
-    <div class="status">
+    <div class="status-pill">
         <span class="status-dot"></span>
-        Agent Online
+        AI Agent Online
     </div>
 
 </header>
@@ -35,268 +41,51 @@
 
     <section class="hero">
 
-        <div>
+        <div class="hero-content">
 
-            <span class="badge">
-                COMPETITION PROTOTYPE
-            </span>
+            <div class="eyebrow">
+                AUTONOMOUS TRAVEL DISRUPTION MANAGEMENT
+            </div>
 
-            <h1>
+            <h2>
                 When one change breaks the journey,
-                we repair the chain.
-            </h1>
+                <span>TripRescue fixes the chain.</span>
+            </h2>
 
             <p>
-                TripRescue AI detects dependency chains
-                across flights, hotels, meetings and
-                activities, then orchestrates an updated plan.
+                TripRescue AI understands dependencies between
+                flights, hotels, meetings and activities,
+                then automatically replans the affected journey.
             </p>
 
         </div>
 
-    </section>
+        <div class="hero-visual">
 
-
-    <section class="grid">
-
-
-        <!-- CURRENT JOURNEY -->
-
-        <div class="panel">
-
-            <div class="panel-header">
-
-                <div>
-
-                    <h2>
-                        Current Journey
-                    </h2>
-
-                    <p>
-                        Mumbai → Delhi
-                    </p>
-
-                </div>
-
-                <span class="live-label">
-                    LIVE DEMO
-                </span>
-
+            <div class="route-node active">
+                <span>✈</span>
+                Flight
             </div>
 
+            <div class="route-line"></div>
 
-            <div class="timeline">
-
-
-                <div
-                    class="journey-card"
-                    data-event="FLIGHT-001"
-                >
-
-                    <div class="icon">
-                        ✈
-                    </div>
-
-                    <div class="journey-info">
-
-                        <div class="event-type">
-                            FLIGHT
-                        </div>
-
-                        <h3>
-                            Mumbai → Delhi
-                        </h3>
-
-                        <p>
-                            10:00 AM → 12:10 PM
-                        </p>
-
-                        <small>
-                            Mumbai Airport
-                        </small>
-
-                    </div>
-
-                    <span class="confirmed">
-                        Confirmed
-                    </span>
-
-                </div>
-
-
-                <div class="connection">
-                    ↓
-                </div>
-
-
-                <div
-                    class="journey-card"
-                    data-event="HOTEL-001"
-                >
-
-                    <div class="icon">
-                        🏨
-                    </div>
-
-                    <div class="journey-info">
-
-                        <div class="event-type">
-                            HOTEL
-                        </div>
-
-                        <h3>
-                            Hotel Grand Delhi
-                        </h3>
-
-                        <p>
-                            Check-in: 2:00 PM
-                        </p>
-
-                        <small>
-                            Connaught Place
-                        </small>
-
-                    </div>
-
-                    <span class="confirmed">
-                        Confirmed
-                    </span>
-
-                </div>
-
-
-                <div class="connection">
-                    ↓
-                </div>
-
-
-                <div
-                    class="journey-card"
-                    data-event="MEETING-001"
-                >
-
-                    <div class="icon">
-                        🤝
-                    </div>
-
-                    <div class="journey-info">
-
-                        <div class="event-type">
-                            MEETING
-                        </div>
-
-                        <h3>
-                            Client Meeting
-                        </h3>
-
-                        <p>
-                            4:00 PM → 5:30 PM
-                        </p>
-
-                        <small>
-                            Gurugram
-                        </small>
-
-                    </div>
-
-                    <span class="confirmed">
-                        Confirmed
-                    </span>
-
-                </div>
-
-
-                <div class="connection">
-                    ↓
-                </div>
-
-
-                <div
-                    class="journey-card"
-                    data-event="ACTIVITY-001"
-                >
-
-                    <div class="icon">
-                        🍽
-                    </div>
-
-                    <div class="journey-info">
-
-                        <div class="event-type">
-                            ACTIVITY
-                        </div>
-
-                        <h3>
-                            Evening Dinner
-                        </h3>
-
-                        <p>
-                            7:30 PM → 9:00 PM
-                        </p>
-
-                        <small>
-                            Connaught Place
-                        </small>
-
-                    </div>
-
-                    <span class="confirmed">
-                        Confirmed
-                    </span>
-
-                </div>
-
+            <div class="route-node">
+                <span>⌂</span>
+                Hotel
             </div>
 
-        </div>
+            <div class="route-line"></div>
 
-
-        <!-- DISRUPTION PANEL -->
-
-        <div class="panel disruption-panel">
-
-            <div class="panel-header">
-
-                <div>
-
-                    <h2>
-                        Inject Disruption
-                    </h2>
-
-                    <p>
-                        Simulate an upstream change
-                    </p>
-
-                </div>
-
+            <div class="route-node">
+                <span>◷</span>
+                Meeting
             </div>
 
+            <div class="route-line"></div>
 
-            <label for="prompt">
-                Disruption scenario
-            </label>
-
-
-            <textarea id="prompt">Flight FLIGHT-001 is delayed by 3 hours. You MUST get the current itinerary, analyze all downstream dependencies, check schedule conflicts, find alternative flights, generate a revised itinerary, and create a communication.</textarea>
-
-
-            <button
-                id="runAgent"
-                class="run-button"
-            >
-                Run Autonomous Replanning
-            </button>
-
-
-            <div
-                id="agentStatus"
-                class="agent-status hidden"
-            >
-
-                <span class="loader"></span>
-
-                Agent is analyzing the disruption...
-
+            <div class="route-node">
+                <span>●</span>
+                Activity
             </div>
 
         </div>
@@ -304,27 +93,416 @@
     </section>
 
 
-    <!-- WORKFLOW -->
-
-    <section class="workflow-section">
+    <section class="panel">
 
         <div class="section-heading">
 
             <div>
+                <span class="step-number">01</span>
 
-                <h2>
-                    Agent Workflow
-                </h2>
+                <div>
+                    <h3>Create your journey</h3>
+                    <p>
+                        Enter your journey once.
+                        TripRescue handles the dependency logic.
+                    </p>
+                </div>
+            </div>
 
-                <p>
-                    Observe → Analyze → Decide → Act
-                </p>
+        </div>
+
+
+        <form id="createTripForm">
+
+            <div class="form-grid">
+
+                <div class="field">
+                    <label for="traveler">
+                        Traveler name
+                    </label>
+
+                    <input
+                        id="traveler"
+                        type="text"
+                        placeholder="e.g. Saksham Gawai"
+                        required
+                    >
+                </div>
+
+
+                <div class="field">
+                    <label for="origin">
+                        Origin
+                    </label>
+
+                    <input
+                        id="origin"
+                        type="text"
+                        placeholder="e.g. Nagpur"
+                        required
+                    >
+                </div>
+
+
+                <div class="field">
+                    <label for="destination">
+                        Destination
+                    </label>
+
+                    <input
+                        id="destination"
+                        type="text"
+                        placeholder="e.g. Mumbai"
+                        required
+                    >
+                </div>
 
             </div>
 
-            <span id="stepCount">
-                0 steps
-            </span>
+
+            <div class="subsection">
+
+                <div class="subsection-title">
+                    <span>✈</span>
+                    Primary flight
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="flightName">
+                            Flight
+                        </label>
+
+                        <input
+                            id="flightName"
+                            type="text"
+                            value="Primary Flight"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="flightStart">
+                            Departure
+                        </label>
+
+                        <input
+                            id="flightStart"
+                            type="datetime-local"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="flightEnd">
+                            Arrival
+                        </label>
+
+                        <input
+                            id="flightEnd"
+                            type="datetime-local"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="subsection">
+
+                <div class="subsection-title">
+                    <span>⌂</span>
+                    Hotel
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="hotelName">
+                            Hotel
+                        </label>
+
+                        <input
+                            id="hotelName"
+                            type="text"
+                            value="Hotel Check-in"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="hotelStart">
+                            Check-in
+                        </label>
+
+                        <input
+                            id="hotelStart"
+                            type="datetime-local"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="hotelEnd">
+                            Check-out
+                        </label>
+
+                        <input
+                            id="hotelEnd"
+                            type="datetime-local"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="subsection">
+
+                <div class="subsection-title">
+                    <span>◷</span>
+                    Optional meeting
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="meetingName">
+                            Meeting
+                        </label>
+
+                        <input
+                            id="meetingName"
+                            type="text"
+                            value="Client Meeting"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="meetingStart">
+                            Start
+                        </label>
+
+                        <input
+                            id="meetingStart"
+                            type="datetime-local"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="meetingEnd">
+                            End
+                        </label>
+
+                        <input
+                            id="meetingEnd"
+                            type="datetime-local"
+                        >
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="subsection">
+
+                <div class="subsection-title">
+                    <span>●</span>
+                    Optional activity
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="activityName">
+                            Activity
+                        </label>
+
+                        <input
+                            id="activityName"
+                            type="text"
+                            value="City Activity"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="activityStart">
+                            Start
+                        </label>
+
+                        <input
+                            id="activityStart"
+                            type="datetime-local"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="activityEnd">
+                            End
+                        </label>
+
+                        <input
+                            id="activityEnd"
+                            type="datetime-local"
+                        >
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="subsection">
+
+                <div class="subsection-title">
+                    <span>◆</span>
+                    Optional dinner
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="dinnerName">
+                            Dinner
+                        </label>
+
+                        <input
+                            id="dinnerName"
+                            type="text"
+                            value="Dinner"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="dinnerStart">
+                            Start
+                        </label>
+
+                        <input
+                            id="dinnerStart"
+                            type="datetime-local"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="dinnerEnd">
+                            End
+                        </label>
+
+                        <input
+                            id="dinnerEnd"
+                            type="datetime-local"
+                        >
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    Create Journey
+                    <span>→</span>
+                </button>
+
+                <button
+                    type="button"
+                    id="resetButton"
+                    class="secondary-button"
+                >
+                    Reset Journey
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <section class="panel disruption-panel">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="step-number">02</span>
+
+                <div>
+                    <h3>Report a disruption</h3>
+                    <p>
+                        Describe what happened naturally.
+                        The AI handles the rest.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="disruption-box">
+
+            <label for="disruptionInput">
+                What changed?
+            </label>
+
+            <textarea
+                id="disruptionInput"
+                rows="4"
+                placeholder="Example: My flight is delayed by 3 hours."
+            ></textarea>
+
+            <div class="disruption-footer">
+
+                <span>
+                    You don't need to provide event IDs,
+                    backup flights or dependency information.
+                </span>
+
+                <button
+                    id="replanButton"
+                    class="primary-button"
+                    type="button"
+                >
+                    Replan Automatically
+                    <span>→</span>
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section
+        class="panel hidden"
+        id="resultsSection"
+    >
+
+        <div class="section-heading">
+
+            <div>
+                <span class="step-number">03</span>
+
+                <div>
+                    <h3>Autonomous recovery</h3>
+                    <p>
+                        TripRescue is tracing the disruption
+                        through your dependency chain.
+                    </p>
+                </div>
+            </div>
 
         </div>
 
@@ -334,10 +512,142 @@
             class="workflow"
         >
 
-            <div class="empty-state">
+            <div
+                class="workflow-step"
+                id="stepDisruption"
+            >
+                <div class="workflow-icon">1</div>
 
-                Run the disruption scenario to see
-                the agent's tool orchestration.
+                <div>
+                    <strong>Disruption detected</strong>
+                    <p>Waiting...</p>
+                </div>
+            </div>
+
+
+            <div
+                class="workflow-step"
+                id="stepImpact"
+            >
+                <div class="workflow-icon">2</div>
+
+                <div>
+                    <strong>Impact analyzed</strong>
+                    <p>Waiting...</p>
+                </div>
+            </div>
+
+
+            <div
+                class="workflow-step"
+                id="stepRecovery"
+            >
+                <div class="workflow-icon">3</div>
+
+                <div>
+                    <strong>Recovery options generated</strong>
+                    <p>Waiting...</p>
+                </div>
+            </div>
+
+
+            <div
+                class="workflow-step"
+                id="stepConstraints"
+            >
+                <div class="workflow-icon">4</div>
+
+                <div>
+                    <strong>Constraints evaluated</strong>
+                    <p>Waiting...</p>
+                </div>
+            </div>
+
+
+            <div
+                class="workflow-step"
+                id="stepSelected"
+            >
+                <div class="workflow-icon">5</div>
+
+                <div>
+                    <strong>Recovery selected</strong>
+                    <p>Waiting...</p>
+                </div>
+            </div>
+
+
+            <div
+                class="workflow-step"
+                id="stepReplanned"
+            >
+                <div class="workflow-icon">6</div>
+
+                <div>
+                    <strong>Journey replanned</strong>
+                    <p>Waiting...</p>
+                </div>
+            </div>
+
+
+            <div
+                class="workflow-step"
+                id="stepCommunication"
+            >
+                <div class="workflow-icon">7</div>
+
+                <div>
+                    <strong>Traveler update prepared</strong>
+                    <p>Waiting...</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="result-grid">
+
+            <div class="result-card">
+
+                <div class="card-title">
+                    Dependency chain
+                </div>
+
+                <div
+                    id="dependencyChain"
+                    class="dependency-chain"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+            <div class="result-card">
+
+                <div class="card-title">
+                    AI recovery scenarios
+                </div>
+
+                <div class="simulation-notice">
+                    Simulation only — live airline
+                    availability is not connected.
+                </div>
+
+                <div id="recoveryOptions"></div>
+
+            </div>
+
+
+            <div class="result-card selected-card">
+
+                <div class="card-title">
+                    Selected recovery
+                </div>
+
+                <div id="selectedRecovery">
+                    —
+                </div>
 
             </div>
 
@@ -346,49 +656,98 @@
     </section>
 
 
-    <!-- RESULT -->
-
     <section
-        id="resultSection"
-        class="result-section hidden"
+        class="panel hidden"
+        id="replannedSection"
     >
 
         <div class="section-heading">
 
             <div>
+                <span class="step-number">04</span>
 
-                <h2>
-                    Replanned Journey
-                </h2>
-
-                <p>
-                    Updated plan generated by the agent
-                </p>
-
+                <div>
+                    <h3>Revised journey</h3>
+                    <p>
+                        The dependency chain has been recalculated.
+                    </p>
+                </div>
             </div>
 
         </div>
 
 
         <div
-            id="result"
-            class="result-grid"
+            id="replannedJourney"
+            class="journey-list"
         ></div>
+
+
+        <div class="communication-card">
+
+            <div class="card-title">
+                Traveler communication
+            </div>
+
+            <div
+                id="communication"
+                class="communication"
+            ></div>
+
+        </div>
 
     </section>
 
 
-    <footer>
+    <section
+        class="panel"
+        id="currentJourneyPanel"
+    >
 
-        TripRescue AI • Simulated travel data •
-        No real bookings or cancellations are performed
+        <div class="section-heading">
 
-    </footer>
+            <div>
+                <span class="step-number">05</span>
+
+                <div>
+                    <h3>Current journey</h3>
+                    <p>
+                        Your active itinerary.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div
+            id="currentJourney"
+            class="journey-list empty"
+        >
+            No journey created yet.
+        </div>
+
+    </section>
 
 </main>
 
 
-<script src="app.js"></script>
+<footer class="footer">
+
+    <div>
+        <strong>TripRescue AI</strong>
+        <span>Autonomous Travel Recovery</span>
+    </div>
+
+    <div>
+        AI-generated recovery scenarios are simulations
+        and are not live booking availability.
+    </div>
+
+</footer>
+
+
+<script src="/app.js"></script>
 
 </body>
 </html>

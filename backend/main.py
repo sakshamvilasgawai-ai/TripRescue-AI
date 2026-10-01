@@ -1,26 +1,21 @@
-import os
+from typing import List, Optional
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
-from .agent import execute_agent
-from .tools import (
-    get_itinerary,
-    simulate_flight_disruption,
-    analyze_dependencies,
-    check_schedule_conflicts,
-    find_alternative_flights,
-    evaluate_alternative_flights,
-    generate_replanned_schedule,
-    create_communication
+from backend.agent import execute_agent
+from backend.tools import (
+    create_trip,
+    get_current_trip,
+    save_trip,
 )
 
 
 app = FastAPI(
     title="TripRescue AI",
-    version="2.0"
+    version="7.0"
 )
 
 
@@ -29,131 +24,101 @@ app.add_middleware(
     allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"]
+    allow_headers=["*"],
 )
+
+
+class TripEvent(BaseModel):
+    id: str
+    type: str
+    name: str
+    start: str
+    end: str
+    location: Optional[str] = None
+    depends_on: List[str] = Field(
+        default_factory=list
+    )
+    buffer_minutes: int = 0
+
+
+class TripRequest(BaseModel):
+    traveler: str
+    origin: str
+    destination: str
+    events: List[TripEvent]
 
 
 class AgentRequest(BaseModel):
     message: str
 
 
-class DisruptionRequest(BaseModel):
-    flight_id: str
-    delay_minutes: int
-
-
-class ReplanRequest(BaseModel):
-    flight_id: str
-    arrival_time: str
-
-
 @app.get("/api/health")
 def health():
-
     return {
-        "status": "online",
-        "agent": "TripRescue AI",
-        "version": "2.0"
+        "status": "ok",
+        "service": "TripRescue AI"
     }
 
 
-@app.get("/api/itinerary")
-def itinerary():
+@app.get("/api/trip")
+def get_trip():
+    return get_current_trip()
 
-    return get_itinerary()
 
-
-@app.post("/api/disrupt")
-def disrupt(
-    request: DisruptionRequest
+@app.post("/api/trip")
+def create_trip_endpoint(
+    request: TripRequest
 ):
+    events = [
+        event.model_dump()
+        for event in request.events
+    ]
 
-    return simulate_flight_disruption(
-        request.flight_id,
-        request.delay_minutes
+    return create_trip(
+        traveler=request.traveler,
+        origin=request.origin,
+        destination=request.destination,
+        events=events
     )
 
 
-@app.post("/api/dependencies")
-def dependencies(
-    request: dict
-):
+@app.post("/api/reset")
+def reset_trip():
+    empty_trip = {
+        "trip_id": None,
+        "traveler": None,
+        "origin": None,
+        "destination": None,
+        "events": [],
+        "original_events": [],
+        "recovery_options": [],
+        "selected_recovery": None,
+        "last_replan": None,
+    }
 
-    return analyze_dependencies(
-        request["event_id"]
+    save_trip(
+        empty_trip
     )
 
-
-@app.post("/api/conflicts")
-def conflicts(
-    request: dict
-):
-
-    return check_schedule_conflicts(
-        request["arrival_time"]
-    )
-
-
-@app.get("/api/alternatives")
-def alternatives():
-
-    return find_alternative_flights()
-
-
-@app.post("/api/evaluate")
-def evaluate(
-    request: dict
-):
-
-    return evaluate_alternative_flights(
-        request["arrival_time"]
-    )
-
-
-@app.post("/api/replan")
-def replan(
-    request: ReplanRequest
-):
-
-    return generate_replanned_schedule(
-        request.flight_id,
-        request.arrival_time
-    )
-
-
-@app.post("/api/communication")
-def communication(
-    request: dict
-):
-
-    return create_communication(
-        request["affected_events"],
-        request["reason"]
-    )
+    return {
+        "success": True,
+        "message": "Journey reset successfully."
+    }
 
 
 @app.post("/api/agent")
 def run_agent(
     request: AgentRequest
 ):
-
     return execute_agent(
         request.message
     )
 
 
-frontend_path = os.path.join(
-    os.path.dirname(
-        os.path.dirname(__file__)
-    ),
-    "frontend"
-)
-
-
 app.mount(
     "/",
     StaticFiles(
-        directory=frontend_path,
+        directory="frontend",
         html=True
     ),
     name="frontend"
