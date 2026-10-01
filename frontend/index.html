@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TripRescue AI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div>
+        <div class="brand">
+            TripRescue AI
+        </div>
+
+        <div class="subtitle">
+            Autonomous Travel Disruption & Replanning Agent
+        </div>
+    </div>
+
+    <div class="status">
+        <span class="status-dot"></span>
+        Agent Online
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <section class="hero">
+
+        <div>
+
+            <span class="badge">
+                COMPETITION PROTOTYPE
+            </span>
+
+            <h1>
+                When one change breaks the journey,
+                we repair the chain.
+            </h1>
+
+            <p>
+                TripRescue AI detects dependency chains
+                across flights, hotels, meetings and
+                activities, then orchestrates an updated plan.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="grid">
+
+
+        <!-- CURRENT JOURNEY -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        Current Journey
+                    </h2>
+
+                    <p>
+                        Mumbai → Delhi
+                    </p>
+
+                </div>
+
+                <span class="live-label">
+                    LIVE DEMO
+                </span>
+
+            </div>
+
+
+            <div class="timeline">
+
+
+                <div
+                    class="journey-card"
+                    data-event="FLIGHT-001"
+                >
+
+                    <div class="icon">
+                        ✈
+                    </div>
+
+                    <div class="journey-info">
+
+                        <div class="event-type">
+                            FLIGHT
+                        </div>
+
+                        <h3>
+                            Mumbai → Delhi
+                        </h3>
+
+                        <p>
+                            10:00 AM → 12:10 PM
+                        </p>
+
+                        <small>
+                            Mumbai Airport
+                        </small>
+
+                    </div>
+
+                    <span class="confirmed">
+                        Confirmed
+                    </span>
+
+                </div>
+
+
+                <div class="connection">
+                    ↓
+                </div>
+
+
+                <div
+                    class="journey-card"
+                    data-event="HOTEL-001"
+                >
+
+                    <div class="icon">
+                        🏨
+                    </div>
+
+                    <div class="journey-info">
+
+                        <div class="event-type">
+                            HOTEL
+                        </div>
+
+                        <h3>
+                            Hotel Grand Delhi
+                        </h3>
+
+                        <p>
+                            Check-in: 2:00 PM
+                        </p>
+
+                        <small>
+                            Connaught Place
+                        </small>
+
+                    </div>
+
+                    <span class="confirmed">
+                        Confirmed
+                    </span>
+
+                </div>
+
+
+                <div class="connection">
+                    ↓
+                </div>
+
+
+                <div
+                    class="journey-card"
+                    data-event="MEETING-001"
+                >
+
+                    <div class="icon">
+                        🤝
+                    </div>
+
+                    <div class="journey-info">
+
+                        <div class="event-type">
+                            MEETING
+                        </div>
+
+                        <h3>
+                            Client Meeting
+                        </h3>
+
+                        <p>
+                            4:00 PM → 5:30 PM
+                        </p>
+
+                        <small>
+                            Gurugram
+                        </small>
+
+                    </div>
+
+                    <span class="confirmed">
+                        Confirmed
+                    </span>
+
+                </div>
+
+
+                <div class="connection">
+                    ↓
+                </div>
+
+
+                <div
+                    class="journey-card"
+                    data-event="ACTIVITY-001"
+                >
+
+                    <div class="icon">
+                        🍽
+                    </div>
+
+                    <div class="journey-info">
+
+                        <div class="event-type">
+                            ACTIVITY
+                        </div>
+
+                        <h3>
+                            Evening Dinner
+                        </h3>
+
+                        <p>
+                            7:30 PM → 9:00 PM
+                        </p>
+
+                        <small>
+                            Connaught Place
+                        </small>
+
+                    </div>
+
+                    <span class="confirmed">
+                        Confirmed
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DISRUPTION PANEL -->
+
+        <div class="panel disruption-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        Inject Disruption
+                    </h2>
+
+                    <p>
+                        Simulate an upstream change
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <label for="prompt">
+                Disruption scenario
+            </label>
+
+
+            <textarea id="prompt">Flight FLIGHT-001 is delayed by 3 hours. You MUST get the current itinerary, analyze all downstream dependencies, check schedule conflicts, find alternative flights, generate a revised itinerary, and create a communication.</textarea>
+
+
+            <button
+                id="runAgent"
+                class="run-button"
+            >
+                Run Autonomous Replanning
+            </button>
+
+
+            <div
+                id="agentStatus"
+                class="agent-status hidden"
+            >
+
+                <span class="loader"></span>
+
+                Agent is analyzing the disruption...
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- WORKFLOW -->
+
+    <section class="workflow-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <h2>
+                    Agent Workflow
+                </h2>
+
+                <p>
+                    Observe → Analyze → Decide → Act
+                </p>
+
+            </div>
+
+            <span id="stepCount">
+                0 steps
+            </span>
+
+        </div>
+
+
+        <div
+            id="workflow"
+            class="workflow"
+        >
+
+            <div class="empty-state">
+
+                Run the disruption scenario to see
+                the agent's tool orchestration.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESULT -->
+
+    <section
+        id="resultSection"
+        class="result-section hidden"
+    >
+
+        <div class="section-heading">
+
+            <div>
+
+                <h2>
+                    Replanned Journey
+                </h2>
+
+                <p>
+                    Updated plan generated by the agent
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="result"
+            class="result-grid"
+        ></div>
+
+    </section>
+
+
+    <footer>
+
+        TripRescue AI • Simulated travel data •
+        No real bookings or cancellations are performed
+
+    </footer>
+
+</main>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
